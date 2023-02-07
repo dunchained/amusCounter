@@ -9,12 +9,10 @@ for item in file_list:
         data = f.readlines()
         for line in data:
             strip_line = line.decode("cp1255")[8:]
-            song_list.append(strip_line)
+            strip_line2 = strip_line[:-2]
+            song_list.append(strip_line2)
            
-print(song_list) 
-#counter = dict(Counter(song_list))
-#print(counter)
-
-# zapis = pandas.DataFrame(data=counter)
-# zapis = zapis.T
-# zapis.to_excel('prebrojano.xlsx', index=[0])
+counter = dict(Counter(song_list))
+zapis = pandas.DataFrame(data=counter, index=[0])
+zapis = zapis.T
+zapis.to_excel('prebrojano.xlsx', index=[0])
